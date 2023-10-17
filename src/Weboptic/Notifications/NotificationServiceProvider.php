@@ -1,9 +1,9 @@
-<?php namespace Szykra\Notifications;
+<?php namespace Weboptic\Notifications;
 
 use Illuminate\Support\ServiceProvider;
 
-class NotificationServiceProvider extends ServiceProvider {
-
+class NotificationServiceProvider extends ServiceProvider
+{
     /**
      * Register the service provider.
      *
@@ -13,7 +13,7 @@ class NotificationServiceProvider extends ServiceProvider {
     {
         $this->app->singleton('flash', function()
         {
-            return $this->app->make('Szykra\Notifications\FlashNotifier');
+            return $this->app->make('Weboptic\Notifications\FlashNotifier');
         });
     }
 
@@ -24,5 +24,4 @@ class NotificationServiceProvider extends ServiceProvider {
     {
         $this->loadViewsFrom(__DIR__.'/../../views', 'notifications');
     }
-
 }

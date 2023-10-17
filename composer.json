@@ -1,5 +1,6 @@
 {
-    "name": "szykra/laravel-flash-notifications",
+    "name": "weboptic/laravel-flash-notifications",
+    "version": "1.0",
     "license": "MIT",
     "keywords": ["laravel", "flash", "notifications", "alerts", "bootstrap", "messages"],
     "description": "Easy way to display Flash Notifications in Laravel 5.",
@@ -7,24 +8,22 @@
         {
             "name": "Szymon Krajewski",
             "email": "szykra@gmail.com"
+        },
+        {
+            "name": "Shane Deakin",
+            "email": "shane@weboptic.com"
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "~5.0",
-        "illuminate/session": "~5.0",
-        "illuminate/contracts": "~5.0"
-    },
-    "require-dev": {
-        "phpspec/phpspec": "~2.0"
+        "php": "^8.2",
+        "illuminate/support": "^10.0",
+        "illuminate/session": "^10.0",
+        "illuminate/contracts": "^10.0"
     },
     "autoload": {
         "psr-0": {
-            "Szykra\\Notifications": "src/"
+            "Weboptic\\Notifications": "src/"
         }
     },
-    "minimum-stability": "stable",
-    "replace": {
-        "szykra/notifications": "self.version"
-    }
+    "minimum-stability": "stable"
 }

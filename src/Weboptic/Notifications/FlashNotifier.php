@@ -1,4 +1,4 @@
-<?php namespace Szykra\Notifications;
+<?php namespace Weboptic\Notifications;
 
 use Illuminate\Session\Store;
 

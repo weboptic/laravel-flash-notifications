@@ -1,11 +1,6 @@
 Laravel Flash Notifications
 ===========================
-[![build](https://img.shields.io/travis/skrajewski/laravel-flash-notifications.svg)](https://travis-ci.org/skrajewski/laravel-flash-notifications)
-[![version](https://img.shields.io/packagist/v/szykra/laravel-flash-notifications.svg)](https://packagist.org/packages/szykra/laravel-flash-notifications)
-![license](https://img.shields.io/packagist/l/szykra/laravel-flash-notifications.svg)
-![downloads](https://img.shields.io/packagist/dm/szykra/laravel-flash-notifications.svg)
-
-Flash Notifications Helper for Laravel 5
+Flash Notifications Helper for Laravel 10
 
 ## Install
 
@@ -15,7 +10,7 @@ Add dependency to your `composer.json` file and run `composer update`.
 
 ```
 require: {
-    "szykra/laravel-flash-notifications": "~0.3"
+    "weboptic/laravel-flash-notifications": "1.0"
 }
 ```
 
@@ -24,11 +19,11 @@ require: {
 Add ServiceProvider and Alias _(Facade)_ to your `config/app.php` file:
 
 ```php
-'Szykra\Notifications\NotificationServiceProvider'
+'Weboptic\Notifications\NotificationServiceProvider'
 ```
 
 ```php
-'Flash' => 'Szykra\Notifications\Flash'
+'Flash' => 'Weboptic\Notifications\Flash'
 ```
 
 ### Include default alert view to your layout
@@ -53,8 +48,6 @@ You can push flash message ever you need by facade `Flash`. It provides 4 alert 
 ```php
 Flash::info('Your alert message here!');
 ```
-
-~~Method `push()` exists because you can push more than one alert at the same time. _See below_.~~
 
 Every alert method takes 1 or 2 arguments. If you give one parameter it will be _message_. If you provide two parameters, first will be _title_ and second will be _message_.
 
