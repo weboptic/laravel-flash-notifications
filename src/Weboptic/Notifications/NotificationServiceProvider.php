@@ -1,26 +1,17 @@
-<?php namespace Weboptic\Notifications;
+<?php
+
+amespace Weboptic\Notifications;
 
 use Illuminate\Support\ServiceProvider;
 
 class NotificationServiceProvider extends ServiceProvider
 {
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
+    public function register(): void
     {
-        $this->app->singleton('flash', function()
-        {
-            return $this->app->make('Weboptic\Notifications\FlashNotifier');
-        });
+        $this->app->singleton('flash', fn () => $this->app->make('Weboptic\Notifications\FlashNotifier'));
     }
-
-    /**
-     * Bootstrap a package
-     */
-    public function boot()
+    
+    public function boot(): void
     {
         $this->loadViewsFrom(__DIR__.'/../../views', 'notifications');
     }

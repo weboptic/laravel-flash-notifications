@@ -1,103 +1,51 @@
-<?php namespace Weboptic\Notifications;
+<?php
+
+namespace Weboptic\Notifications;
 
 use Illuminate\Session\Store;
 
-class FlashNotifier {
+class FlashNotifier
+{
+    protected Store $session;
 
-    /**
-     * @var Store
-     */
-    protected $session;
-
-    /**
-     * @var array
-     */
-    protected $notifies = [];
-
-    /**
-     * @param Store $session
-     */
+    protected array $notifies = [];
+    
     public function __construct(Store $session)
     {
         $this->session = $session;
     }
-
-    /**
-     * Set information alert
-     *
-     * @return $this
-     */
-    public function info()
+    
+    public function info(string $message, string $title = ''): self
     {
-        return $this->message(func_get_args(), "info");
+        return $this->message('info', $message, $title);
     }
-
-    /**
-     * Set success alert
-     *
-     * @return $this
-     */
-    public function success()
+    
+    public function success(string $message, string $title = ''): self
     {
-        return $this->message(func_get_args(), "success");
+        return $this->message('success', $message, $title);
     }
-
-    /**
-     * Set warning alert
-     *
-     * @return $this
-     */
-    public function warning()
+    
+    public function warning(string $message, string $title = ''): self
     {
-        return $this->message(func_get_args(), "warning");
+        return $this->message('warning', $message, $title);
     }
-
-    /**
-     * Set error alert
-     *
-     * @return $this
-     */
-    public function error()
+    
+    public function error(string $message, string $title = ''): self
     {
-        return $this->message(func_get_args(), "danger");
+        return $this->message('danger', $message, $title);
     }
-
-    /**
-     * Push notifies array to session
-     */
-    protected function push()
+    
+    protected function push(): void
     {
         $this->session->flash('flash.alerts', $this->notifies);
     }
-
-    /**
-     * Expand $args and set alert to notify table
-     *
-     * @param $args
-     * @param $level
-     * @return $this
-     */
-    protected function message($args, $level)
+    
+    protected function message(string $level, string $message, string $title = ''): self
     {
-        switch(count($args))
-        {
-            case 2:
-                $title = $args[0];
-                $message = $args[1];
-                break;
-            case 1:
-                $title = '';
-                $message = $args[0];
-                break;
-            default:
-                throw new \InvalidArgumentException('Cannot resolve arguments. Please provide one parameter as `message` or two parameters as `title` and `message`.');
-        }
-
         $this->notifies[] = ['title' => $title, 'message' => $message, 'level' => $level];
 
         $this->push();
 
         return $this;
     }
-
 }
