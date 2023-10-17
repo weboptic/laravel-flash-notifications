@@ -25,5 +25,15 @@
             "Weboptic\\Notifications": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Weboptic\\Notifications\\NotificationServiceProvider"
+            ],
+            "aliases": {
+                "Flash": "Weboptic\\Notifications\\Flash"
+            }
+        }
+    },
     "minimum-stability": "stable"
 }
